@@ -12,7 +12,7 @@
 
     <!-- Middle - info -->
     <div class="w-[650px] max-[750px]:w-11/12 text-center m-auto">
-        <h1 class="text-fontPrimary text-[40px] font-bold">How it works</h1>
+        <h1 class="text-fontPrimary text-[40px] font-bold mb-2">How it works</h1>
         <p class="text-fontSecondary">Nunc laoreet consequat nunc at consequat. Praesent aliquam mi id efficitur pellentesque. Maecenas varius felis felis.</p>
     </div>
 
@@ -25,7 +25,7 @@
 </div>
 
 <ng-template #cardTemplate let-data="data">
-    <div class="w-96 h-64 px-2 py-8 flex flex-col gap-y-4 text-center border border-[#E7E8E3] rounded-2xl">
+    <div class="w-96 h-fit px-2 py-8 flex flex-col gap-y-2 text-center border border-[#E7E8E3] rounded-2xl max-[800px]:py-3">
         <img src="{{ data.src }}" class="w-12 h-12 m-auto" alt="home-icon">
         <h2 class="text-fontPrimary font-bold text-[24px]">{{ data.text }}</h2>
         <p class="text-fontSecondary">Odales mauris quis tellus facilisis, vel mattis magna interdum. Curabitur eget aliquam elit. In mauris purus, auctor a eleifend non.</p>
