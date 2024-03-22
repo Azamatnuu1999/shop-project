@@ -12,7 +12,7 @@ export class NavbarSectionComponent {
   public isMenuChecked: boolean = false;
   private translate = inject(TranslateService).setDefaultLang('uz_cyrl');
 
-  onCheckboxChange(event: Event) {
-    this.isMenuChecked = (event.target as HTMLInputElement).checked;
+  onCheckboxChange() {
+    this.isMenuChecked = !this.isMenuChecked;
   }
 }
