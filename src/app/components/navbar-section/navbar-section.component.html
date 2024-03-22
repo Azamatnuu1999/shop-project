@@ -24,17 +24,17 @@
               class="block fixed top-0 -right-full w-60 h-full m-0 py-20 list-none bg-[#ECEFF1] shadow-[-2px_2px_6px_rgba(0,0,0,0.4)] duration-300 text-fontPrimary text-sm font-semibold"
               [ngClass]="{ 'right-0': isMenuChecked }"
             >
-                <li (click)="onCheckboxChange()" class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a href="#home">{{ 'header.home' | translate }}</a>
+                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                    <a (click)="onCheckboxChange()" href="#home">{{ 'header.home' | translate }}</a>
                 </li>
-                <li (click)="onCheckboxChange()" class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a href="#about">{{ 'header.aboutCompany' | translate }}</a>
+                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                    <a (click)="onCheckboxChange()" href="#about">{{ 'header.aboutCompany' | translate }}</a>
                 </li>
-                <li (click)="onCheckboxChange()" class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a href="#products">{{ 'header.products' | translate }}</a>
+                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                    <a (click)="onCheckboxChange()" href="#products">{{ 'header.products' | translate }}</a>
                 </li>
-                <li (click)="onCheckboxChange()" class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a href="#contact">{{ 'header.contact' | translate }}</a>
+                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                    <a (click)="onCheckboxChange()" href="#contact">{{ 'header.contact' | translate }}</a>
                 </li>
             </ul>
         </div>
