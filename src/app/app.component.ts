@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeroSectionComponent } from './components/hero-section/hero-section.component';
-import { NavbarSectionComponent } from './components/navbar-section/navbar-section.component';
-import { AboutSectionComponent } from './components/about-section/about-section.component';
-import { AboutSectionTwoComponent } from './components/about-section-two/about-section-two.component';
+import { HeroSectionComponent } from './sections/hero-section/hero-section.component';
+import { NavbarSectionComponent } from './sections/navbar-section/navbar-section.component';
+import { AboutSectionComponent } from './sections/about-section/about-section.component';
+import { AboutSectionTwoComponent } from './sections/about-section-two/about-section-two.component';
+import { ProductsSectionComponent } from './sections/products-section/products-section.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { AboutSectionTwoComponent } from './components/about-section-two/about-s
     NavbarSectionComponent,
     HeroSectionComponent,
     AboutSectionComponent,
-    AboutSectionTwoComponent
+    AboutSectionTwoComponent,
+    ProductsSectionComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

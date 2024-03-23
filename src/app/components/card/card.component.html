@@ -1,0 +1,23 @@
+<div class="w-96 rounded-b-[10px] cursor-pointer" style="box-shadow: 0 3px 6px 1px #E7E8E3">
+
+    <!-- Top - image block -->
+    <div class="h-64 relative z-0">
+        @if(data.discount) {
+            <span class="px-2 py-0 absolute top-2 left-2 text-sm text-white  bg-btnColor">SALE</span>
+        }
+        <img class="z-0" src="{{ data.imgSrc[0] }}" alt="card image">
+    </div>
+
+    <!-- Bottom - detail block -->
+    <div class="p-4 text-fontPrimary font-bold">
+        <h1 class="text-xl">{{ data.name }}</h1>
+        @if(data.discount) {
+            <h3 class="h-[11px] text-xs font-normal text-fontSecondary line-through">{{ data.price | currency }} сум</h3>
+        } @else {
+            <h3 class="h-[11px]"></h3>
+        }
+        <h2 class="text-fontPrimary">{{ (data.discount ? (100 - data.discount) / 100 * data.price : data.price) | currency }} сум</h2>
+        <p class="font-normal text-xs text-fontSecondary">{{ data.details }}</p>
+    </div>
+
+</div>
