@@ -5,6 +5,7 @@ import { NavbarSectionComponent } from './sections/navbar-section/navbar-section
 import { AboutSectionComponent } from './sections/about-section/about-section.component';
 import { AboutSectionTwoComponent } from './sections/about-section-two/about-section-two.component';
 import { ProductsSectionComponent } from './sections/products-section/products-section.component';
+import { SliderSectionComponent } from './sections/slider-section/slider-section.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { ProductsSectionComponent } from './sections/products-section/products-s
     HeroSectionComponent,
     AboutSectionComponent,
     AboutSectionTwoComponent,
-    ProductsSectionComponent
+    ProductsSectionComponent,
+    SliderSectionComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
