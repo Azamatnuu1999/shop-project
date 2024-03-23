@@ -21,13 +21,14 @@ export class SliderComponent implements OnInit{
     const prevBtn = this.document.querySelector('.prev');
     const nextBtn = this.document.querySelector('.next');
     let currentPosition = 0;
-    const step = 600;
+    const step = slider.clientWidth / 3;
+    const currCheck = step == 300 ? -600 : -1200;
 
     function moveSlider(direction:string) {
       if (direction === 'prev') {
-        currentPosition + step > 0 ? currentPosition = -1200 : currentPosition += step;
+        currentPosition + step > 0 ? currentPosition = currCheck : currentPosition += step;
       } else {
-        currentPosition - step < -1200 ? currentPosition = 0 : currentPosition -= step;
+        currentPosition - step < currCheck ? currentPosition = 0 : currentPosition -= step;
       }
       if(slider) slider.style.left = currentPosition + 'px';
     }
