@@ -6,6 +6,7 @@ import { AboutSectionComponent } from './sections/about-section/about-section.co
 import { AboutSectionTwoComponent } from './sections/about-section-two/about-section-two.component';
 import { ProductsSectionComponent } from './sections/products-section/products-section.component';
 import { SliderSectionComponent } from './sections/slider-section/slider-section.component';
+import { FooterSectionComponent } from './sections/footer-section/footer-section.component';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,10 @@ import { SliderSectionComponent } from './sections/slider-section/slider-section
     AboutSectionComponent,
     AboutSectionTwoComponent,
     ProductsSectionComponent,
-    SliderSectionComponent
+    SliderSectionComponent,
+    FooterSectionComponent
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'shop-project';
