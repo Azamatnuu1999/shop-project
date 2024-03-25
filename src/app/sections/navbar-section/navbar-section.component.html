@@ -1,58 +1,61 @@
 <!-- Navbar section -->
-<header class="w-full py-4 px-8 fixed top-0 z-10 bg-white flex justify-between items-center">
+<header class="w-full py-4 px-8 fixed top-0 z-10 bg-white">
 
-    <!-- Logo -->
-    <div class="w-fit flex gap-x-2 cursor-pointer">
-        <img src="assets/img/logo.png" alt="logo">
-        <span class="text-fontPrimary text-lg leading-8 font-semibold">Realco</span>
-    </div>
+    <div class="myContainer flex justify-between items-center">
+        <!-- Logo -->
+        <div class="w-fit flex gap-x-2 cursor-pointer">
+            <img src="assets/img/logo.png" alt="logo">
+            <span class="text-fontPrimary text-lg leading-8 font-semibold">Realco</span>
+        </div>
 
-    <!-- Menu -->
-    <div>
-        <!-- Burger menu -->
-        <div class="min-[651px]:hidden">
-            <input id="menu__toggle" class="opacity-0" type="checkbox" (change)="onCheckboxChange()" />
-            <label class="fixed top-6 right-8 w-7 h-7 cursor-pointer z-[1]" for="menu__toggle">
-                <span 
-                  class="absolute top-2 w-full h-[2px] duration-300 bg-btnColor before:absolute before:w-full before:bg-btnColor before:h-[2px] before:-top-2 after:absolute after:w-full after:bg-btnColor after:h-[2px] after:top-2" 
-                  [ngClass]="{ 'rotate-45 after:hidden before:top-0 before:-rotate-90': isMenuChecked }"
-                ></span>
-            </label>
+        <!-- Menu -->
+        <div>
+            <!-- Burger menu -->
+            <div class="min-[651px]:hidden">
+                <input id="menu__toggle" class="opacity-0" type="checkbox" (change)="onCheckboxChange()" />
+                <label class="fixed top-6 right-8 w-7 h-7 cursor-pointer z-[1]" for="menu__toggle">
+                    <span 
+                      class="absolute top-2 w-full h-[2px] duration-300 bg-btnColor before:absolute before:w-full before:bg-btnColor before:h-[2px] before:-top-2 after:absolute after:w-full after:bg-btnColor after:h-[2px] after:top-2" 
+                      [ngClass]="{ 'rotate-45 after:hidden before:top-0 before:-rotate-90': isMenuChecked }"
+                    ></span>
+                </label>
+       
+                <!-- Sidebar menu - when menu checked -->
+                <ul 
+                  class="block fixed top-0 -right-full w-60 h-full m-0 py-20 list-none bg-[#ECEFF1] shadow-[-2px_2px_6px_rgba(0,0,0,0.4)] duration-300 text-fontPrimary text-sm font-semibold"
+                  [ngClass]="{ 'right-0': isMenuChecked }"
+                >
+                    <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                        <a (click)="onCheckboxChange()" href="#home">{{ 'header.home' | translate }}</a>
+                    </li>
+                    <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                        <a (click)="onCheckboxChange()" href="#about">{{ 'header.aboutCompany' | translate }}</a>
+                    </li>
+                    <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                        <a (click)="onCheckboxChange()" href="#products">{{ 'header.products' | translate }}</a>
+                    </li>
+                    <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
+                        <a (click)="onCheckboxChange()" href="#contact">{{ 'header.contact' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
 
-            <!-- Sidebar menu - when menu checked -->
-            <ul 
-              class="block fixed top-0 -right-full w-60 h-full m-0 py-20 list-none bg-[#ECEFF1] shadow-[-2px_2px_6px_rgba(0,0,0,0.4)] duration-300 text-fontPrimary text-sm font-semibold"
-              [ngClass]="{ 'right-0': isMenuChecked }"
-            >
-                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a (click)="onCheckboxChange()" href="#home">{{ 'header.home' | translate }}</a>
+            <!-- Main menu -->
+            <ul class="flex gap-x-4 text-sm max-[650px]:hidden">
+                <li class="hover:text-btnColor duration-300">
+                    <a href="#home">{{ 'header.home' | translate }}</a>
                 </li>
-                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a (click)="onCheckboxChange()" href="#about">{{ 'header.aboutCompany' | translate }}</a>
+                <li class="hover:text-btnColor duration-300">
+                    <a href="#about">{{ 'header.aboutCompany' | translate }}</a>
                 </li>
-                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a (click)="onCheckboxChange()" href="#products">{{ 'header.products' | translate }}</a>
+                <li class="hover:text-btnColor duration-300">
+                    <a href="#products">{{ 'header.products' | translate }}</a>
                 </li>
-                <li class="py-3 px-6 hover:bg-[#CFD8DC] duration-300">
-                    <a (click)="onCheckboxChange()" href="#contact">{{ 'header.contact' | translate }}</a>
+                <li class="hover:text-btnColor duration-300">
+                    <a href="#contact">{{ 'header.contact' | translate }}</a>
                 </li>
             </ul>
         </div>
-
-        <!-- Main menu -->
-        <ul class="flex gap-x-4 text-sm max-[650px]:hidden">
-            <li class="hover:text-btnColor duration-300">
-                <a href="#home">{{ 'header.home' | translate }}</a>
-            </li>
-            <li class="hover:text-btnColor duration-300">
-                <a href="#about">{{ 'header.aboutCompany' | translate }}</a>
-            </li>
-            <li class="hover:text-btnColor duration-300">
-                <a href="#products">{{ 'header.products' | translate }}</a>
-            </li>
-            <li class="hover:text-btnColor duration-300">
-                <a href="#contact">{{ 'header.contact' | translate }}</a>
-            </li>
-        </ul>
     </div>
+
 </header>

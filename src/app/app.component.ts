@@ -9,6 +9,7 @@ import { SliderSectionComponent } from './sections/slider-section/slider-section
 import { FooterSectionComponent } from './sections/footer-section/footer-section.component';
 import { ContactSectionComponent } from './sections/contact-section/contact-section.component';
 import { MessageSectionComponent } from './sections/message-section/message-section.component';
+import { ProductDetailComponent } from './modules/product-detail/product-detail.component';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +24,11 @@ import { MessageSectionComponent } from './sections/message-section/message-sect
     SliderSectionComponent,
     ContactSectionComponent,
     MessageSectionComponent,
-    FooterSectionComponent
+    FooterSectionComponent,
+    ProductDetailComponent
   ],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'shop-project';
