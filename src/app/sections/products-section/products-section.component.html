@@ -16,7 +16,10 @@
     <!-- Products block -->
     <div class="py-20 flex justify-around gap-8 flex-wrap">
         @for(card of data; track card) {
-            <app-card [data]="card"></app-card>
+            <app-card 
+              [routerLink]="['products', card.id]"
+              [data]="card"
+            ></app-card>
         }
     </div>
 

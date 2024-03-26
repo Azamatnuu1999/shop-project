@@ -1,16 +1,19 @@
-<div class="myContainer my-16 flex">
+<div 
+  class="myContainer my-16 py-4 flex flex-wrap items-center max-[1400px]:px-8 max-[450px]:px-4" 
+  style="min-height: calc(100vh - 64px)"
+>
 
     <!-- Product image -->
-    <div class="w-1/2 flex flex-wrap gap-x-2">
+    <div class="w-1/2 flex flex-wrap gap-x-2 max-[900px]:w-full">
 
         <!-- Main image -->
         <div class="w-full mb-2">
-            <img class="w-full" src="{{ mainUrl }}" alt="product main image">
+            <img class="w-full" src="{{ data.imgSrc[0] }}" alt="product main image">
         </div>
 
         <!-- Side images -->
         <ul class="flex gap-x-2">
-            @for(url of urls; track url) {
+            @for(url of data.imgSrc; track url) {
                 <li class="w-1/4" (click)="onChangePhoto(url)">
                     <img src="{{ url }}" alt="product image">
                 </li>
@@ -19,25 +22,26 @@
     </div>
 
     <!-- Product info block -->
-    <div class="w-1/2">
+    <div class="w-1/2 max-[900px]:w-full">
 
-        <div class="p-4 text-fontPrimary font-bold max-[600px]:pt-0">
-            <h1 class="mb-8 text-xl">{{ data.name }}</h1>
+        <div class="p-4 text-fontPrimary font-bold max-[450px]:px-2">
+            <h1 class="mb-2 text-xl">{{ data.name }}</h1>
+            <h2 class="mb-2 text-btnColor">★★★★★</h2>
             @if(data.discount) {
                 <h3 class="h-[11px] text-xs font-normal text-fontSecondary line-through">{{ data.price | currency }} сум</h3>
             } @else {
                 <h3 class="h-[11px]"></h3>
             }
             <h2 class="text-fontPrimary">{{ (data.discount ? (100 - data.discount) / 100 * data.price : data.price) | currency }} сум</h2>
-            <p class="mt-8 font-normal leading-6 text-xs text-fontSecondary"> {{ data.details }}</p>
+            <p class="mt-4 font-normal leading-6 text-xs text-fontSecondary"> {{ data.details }}</p>
         </div>
 
         <div class="p-4">
-            <h1 class="mb-2 text-xl font-semibold">Fill form to order</h1>
+            <h1 class="mb-4 text-xl font-semibold">Fill form to order</h1>
             <!-- Full Name -->
-            <input class="w-full mb-2 p-1 border border-fontSecondary" type="text" placeholder="Full Name">
+            <input class="w-full mb-4 p-1 border border-fontSecondary" type="text" placeholder="Full Name">
             <!-- Mobile Phone -->
-            <input class="w-full p-1 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+            <input class="w-full mb-4 p-1 border border-fontSecondary" type="text" placeholder="Mobile Phone">
             <!-- Send button -->
             <button class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
         </div>

@@ -1,43 +1,56 @@
 import { NgFor } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CardModel } from '../../core/interfaces/card.model';
 import { CurrencyPipe } from '../../core/pipes/currency.pipe';
+import { CardService } from '../../core/services/card.service';
+import { takeUntil } from 'rxjs';
+import { DestroyService } from '../../core/services/destroy.service';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: 'product-detail.component.html',
     imports: [NgFor, CurrencyPipe],
+    providers: [CardService, DestroyService],
     standalone: true
 })
 
 export class ProductDetailComponent implements OnInit {
-    @Input('data') data!: CardModel;
+    public data: CardModel = {
+        id: '',
+        price: 0,
+        discount: 0,
+        name: '',
+        details: '',
+        imgSrc: ['']
+    };
+    public mainUrl!: string;
 
     private route = inject(ActivatedRoute);
+    private destoyer = inject(DestroyService);
+    private $productService = inject(CardService);
     
-    urls: string[] = [
-        'assets/img/cards/card-1.png',
-        'assets/img/cards/card-2.png',
-        'assets/img/cards/card-3.png',
-        'assets/img/cards/card-4.png'
-    ]
-    mainUrl: string = this.urls[0];
 
     ngOnInit(): void {
-        this.route.params;
-        this.data = {
-            "id": "0",
-            "name": "Cozy studio in Los Angeles",
-            "price": 1200000,
-            "discount": 10,
-            "details": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam accusamus odit nesciunt autem cum optio ab omnis, quis praesentium molestiae labore beatae velit, quas ullam repellat. Tempora vero delectus reprehenderit rem, obcaecati omnis, dolorem corrupti dignissimos, eaque quam pariatur sunt voluptatum cum suscipit voluptas doloremque harum beatae soluta. Iste, at. Officia libero recusandae, ea impedit molestias aspernatur perspiciatis cumque quod, est odit provident alias magnam explicabo cum. Officiis obcaecati corrupti, ipsam reiciendis, possimus explicabo dolores harum alias animi, nostrum unde praesentium repellat neque illum reprehenderit! Quidem omnis fuga beatae, dolorem optio consequuntur maxime, eveniet sequi cumque, ab libero magni laborum.",
-            "imgSrc": ["assets/img/cards/card-1.png", "assets/img/cards/card-2.png", "assets/img/cards/card-3.png"]
+        const productId = this.route.snapshot.params['id'];
+        this.getProductData(productId);
+        if (typeof window !== 'undefined') {
+            window.scrollTo({ top: 0, behavior: 'instant' })
         }
     }
 
     onChangePhoto(url: string) {
         this.mainUrl = url;
+    }
+
+    getProductData(id: string) {
+        this.$productService
+          .getCards()
+          .pipe(takeUntil(this.destoyer))
+          .subscribe((data) => {
+            this.data = (data.cards as CardModel[]).filter(card => card.id == id)[0];
+            this.mainUrl = this.data.imgSrc[0];
+        })
     }
 
 }

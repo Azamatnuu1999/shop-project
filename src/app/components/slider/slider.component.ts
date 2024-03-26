@@ -1,5 +1,6 @@
 import { DOCUMENT, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-slider',

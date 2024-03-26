@@ -5,11 +5,12 @@ import { CardService } from '../../core/services/card.service';
 import { CardModel } from '../../core/interfaces/card.model';
 import { DestroyService } from '../../core/services/destroy.service';
 import { takeUntil } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products-section',
   standalone: true,
-  imports: [CardComponent, NgFor],
+  imports: [CardComponent, NgFor, RouterLink],
   providers: [DestroyService],
   templateUrl: './products-section.component.html'
 })

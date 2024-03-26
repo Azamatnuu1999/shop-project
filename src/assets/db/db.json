@@ -6,7 +6,7 @@
             "price": 1200000,
             "discount": 10,
             "details": "2263 Southlea, Los Angeles",
-            "imgSrc": ["assets/img/cards/card-1.png", "assets/img/cards/card-2.png", "assets/img/cards/card-3.png"]
+            "imgSrc": ["assets/img/cards/card-1.png", "assets/img/cards/card-2.png", "assets/img/cards/card-3.png", "assets/img/cards/card-4.png"]
         },
         {
             "id": "1",
@@ -14,7 +14,7 @@
             "price": 740000,
             "discount": 12,
             "details": "2569 El Segundo, San Diego",
-            "imgSrc": ["assets/img/cards/card-2.png", "assets/img/cards/card-3.png", "assets/img/cards/card-4.png"]
+            "imgSrc": ["assets/img/cards/card-2.png", "assets/img/cards/card-3.png", "assets/img/cards/card-4.png", "assets/img/cards/card-5.png"]
         },
         {
             "id": "2",
@@ -22,7 +22,7 @@
             "price": 980000,
             "discount": 0,
             "details": "4489 Smity Fielda, New York",
-            "imgSrc": ["assets/img/cards/card-3.png", "assets/img/cards/card-4.png", "assets/img/cards/card-5.png"]
+            "imgSrc": ["assets/img/cards/card-3.png", "assets/img/cards/card-4.png", "assets/img/cards/card-5.png", "assets/img/cards/card-6.png"]
         },
         {
             "id": "3",
@@ -30,7 +30,7 @@
             "price": 42000,
             "discount": 0,
             "details": "2263 Southlea, Los Angeles",
-            "imgSrc": ["assets/img/cards/card-4.png", "assets/img/cards/card-5.png", "assets/img/cards/card-6.png"]
+            "imgSrc": ["assets/img/cards/card-4.png", "assets/img/cards/card-5.png", "assets/img/cards/card-6.png", "assets/img/cards/card-1.png"]
         },
         {
             "id": "4",
@@ -38,7 +38,7 @@
             "price": 820000,
             "discount": 7,
             "details": "2569 Halls Corner, Las Vegas",
-            "imgSrc": ["assets/img/cards/card-5.png", "assets/img/cards/card-6.png", "assets/img/cards/card-1.png"]
+            "imgSrc": ["assets/img/cards/card-5.png", "assets/img/cards/card-6.png", "assets/img/cards/card-1.png", "assets/img/cards/card-2.png"]
         },
         {
             "id": "5",
@@ -46,7 +46,7 @@
             "price": 372000,
             "discount": 14,
             "details": "2569 El Segundo, San Diego",
-            "imgSrc": ["assets/img/cards/card-6.png", "assets/img/cards/card-1.png", "assets/img/cards/card-2.png"]
+            "imgSrc": ["assets/img/cards/card-6.png", "assets/img/cards/card-1.png", "assets/img/cards/card-2.png", "assets/img/cards/card-3.png"]
         }
     ]
 }

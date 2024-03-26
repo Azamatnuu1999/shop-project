@@ -1,5 +1,4 @@
 <div 
-  [routerLink]="['/' + data.id]"
   class="w-96 rounded-b-[10px] cursor-pointer max-[600px]:w-full max-[600px]:m-0" 
   style="box-shadow: 0 3px 6px 1px #E7E8E3"
 >
@@ -13,7 +12,7 @@
     </div>
 
     <!-- Bottom - detail block -->
-    <div class="p-4 text-fontPrimary font-bold max-[600px]:pt-0">
+    <div class="p-4 text-fontPrimary font-bold max-[420px]:pt-0">
         <h1 class="text-xl">{{ data.name }}</h1>
         @if(data.discount) {
             <h3 class="h-[11px] text-xs font-normal text-fontSecondary line-through">{{ data.price | currency }} сум</h3>
