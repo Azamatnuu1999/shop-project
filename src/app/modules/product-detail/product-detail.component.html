@@ -7,14 +7,21 @@
     <div class="w-1/2 flex flex-wrap gap-x-2 max-[900px]:w-full">
 
         <!-- Main image -->
-        <div class="w-full mb-2">
-            <img class="w-full" src="{{ data.imgSrc[0] }}" alt="product main image">
+        <div class="w-full relative mb-2">
+            <img class="w-full" src="{{ mainUrl }}" alt="product main image">
+            @if(data.discount) {
+                <span class="px-2 py-0 absolute top-2 left-2 text-sm text-white  bg-btnColor">SALE</span>
+            }
         </div>
 
         <!-- Side images -->
         <ul class="flex gap-x-2">
             @for(url of data.imgSrc; track url) {
-                <li class="w-1/4" (click)="onChangePhoto(url)">
+                <li 
+                  class="w-1/4 border-2"
+                  (click)="onChangePhoto(url)"
+                  [class]="url == mainUrl ? 'border-btnColor' : 'border-white'"
+                  >
                     <img src="{{ url }}" alt="product image">
                 </li>
             }

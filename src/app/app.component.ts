@@ -1,4 +1,4 @@
-import { Component, InjectionToken } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterSectionComponent } from './sections/footer-section/footer-section.component';
 import { MessageSectionComponent } from './sections/message-section/message-section.component';
