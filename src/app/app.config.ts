@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 
 import { routes } from './app.routes';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
@@ -11,9 +11,16 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'enabled',
+  // Other options (optional)
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), 
+    provideRouter(routes,
+      withInMemoryScrolling(scrollConfig)
+    ), 
     provideHttpClient(withFetch()),
     provideClientHydration(),
     importProvidersFrom([

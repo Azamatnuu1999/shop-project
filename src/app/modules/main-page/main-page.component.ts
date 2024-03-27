@@ -5,6 +5,7 @@ import { ContactSectionComponent } from '../../sections/contact-section/contact-
 import { HeroSectionComponent } from '../../sections/hero-section/hero-section.component';
 import { ProductsSectionComponent } from '../../sections/products-section/products-section.component';
 import { SliderSectionComponent } from '../../sections/slider-section/slider-section.component';
+import { AboutCompanySectionComponent } from '../../sections/about-company-section/about-company-section.component';
 
 @Component({
     selector: 'app-main-page',
@@ -15,6 +16,7 @@ import { SliderSectionComponent } from '../../sections/slider-section/slider-sec
         AboutSectionComponent,
         AboutSectionTwoComponent,
         ProductsSectionComponent,
+        AboutCompanySectionComponent,
         SliderSectionComponent,
         ContactSectionComponent
     ]

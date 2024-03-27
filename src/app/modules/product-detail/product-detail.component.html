@@ -55,4 +55,16 @@
 
     </div>
 
+    <!-- Similar products -->
+    <div class="countainer flex flex-wrap justify-around gap-8">
+        <h1 class="w-full mt-16 text-3xl font-semibold text-fontPrimary">Similar products</h1>
+        @for(card of similarProducts; track card) {
+            <app-card
+              (click)="onGetData(card.id)"
+              [routerLink]="['/products', card.id]"
+              [data]="card"
+            ></app-card>
+        }
+    </div>
+
 </div>
