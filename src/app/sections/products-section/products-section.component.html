@@ -1,26 +1,31 @@
 <div 
   id="products"
-  class="myContainer my-4 px-4 py-32 min-h-[100vh] bg-bgColor" 
+  class="my-4 px-4 py-32 min-h-[100vh] bg-bgColor" 
   style="background-image: url('assets/img/edgeRight.png'), url('assets/img/edgeLeft.png'); background-position: right top, left bottom; background-repeat: no-repeat;"
 >
-    <!-- Info block -->
-    <div class="w-fit h-fit m-auto flex flex-col gap-4 text-center">
-        <p class="w-fit py-[2px] px-3 rounded-xl bg-[#E7E8E3] text-fontPrimary text-xs max-[600px]:text-[10px] m-auto">
-            Properties
-        </p>
-        <h1 class="text-fontPrimary text-[44px] leading-[50px] font-bold max-[600px]:text-[32px]">
-            Houses in your favorite area
-        </h1>
-    </div>
+   
+    <div class="myContainer">
 
-    <!-- Products block -->
-    <div class="py-20 flex justify-around gap-8 flex-wrap">
-        @for(card of data; track card) {
-            <app-card 
-              [routerLink]="['products', card.id]"
-              [data]="card"
-            ></app-card>
-        }
+        <!-- Info block -->
+        <div class="w-fit h-fit m-auto flex flex-col gap-4 text-center">
+            <p class="w-fit py-[2px] px-3 rounded-xl bg-[#E7E8E3] text-fontPrimary text-xs max-[600px]:text-[10px] m-auto">
+                Properties
+            </p>
+            <h1 class="text-fontPrimary text-[44px] leading-[50px] font-bold max-[600px]:text-[32px]">
+                Houses in your favorite area
+            </h1>
+        </div>
+
+        <!-- Products block -->
+        <div class="w-full py-20 flex justify-around gap-8 flex-wrap">
+            @for(card of data; track card) {
+                <app-card 
+                  [routerLink]="['products', card.id]"
+                  [data]="card"
+                ></app-card>
+            }
+        </div>
+
     </div>
 
 </div>

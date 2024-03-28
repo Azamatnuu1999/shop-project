@@ -1,41 +1,63 @@
-<div class="myContainer my-8 p-16 bg-bgColor max-[700px]:p-4 max-[700px]:pb-12">
+<div class="my-8 p-16 bg-bgColor max-[700px]:p-4 max-[700px]:pb-12">
 
-    <!-- Info block -->
-    <div class="w-fit h-fit mx-auto mt-8 mb-16 flex flex-col gap-4 text-center">
-        <p class="w-fit py-[2px] px-3 rounded-xl bg-[#E7E8E3] text-fontPrimary text-xs max-[600px]:text-[10px] m-auto">
-            Give us feedback
-        </p>
-        <h1 class="text-fontPrimary text-[44px] leading-[50px] font-bold max-[600px]:text-[32px]">
-            Easy message to us, don't hesitate.
-        </h1>
-    </div>
+    <div class="myContainer">
 
-    <div class="flex flex-wrap">
+        <!-- Info block -->
+        <div class="w-fit h-fit mx-auto mt-8 mb-16 flex flex-col gap-4 text-center">
+            <p class="w-fit py-[2px] px-3 rounded-xl bg-[#E7E8E3] text-fontPrimary text-xs max-[600px]:text-[10px] m-auto">
+                Give us feedback
+            </p>
+            <h1 class="text-fontPrimary text-[44px] leading-[50px] font-bold max-[600px]:text-[32px]">
+                Easy message to us, don't hesitate.
+            </h1>
+        </div>
 
-        <!-- Form block -->
-        <div class="w-1/2 p-4 max-[700px]:w-full">
+        <div class="flex flex-wrap">
+
+            <!-- Form block -->
+            <div [formGroup]="form" class="w-1/2 p-4 max-[700px]:w-full">
     
-            <h1 class="text-fontPrimary text-3xl leading-[36px] font-bold max-[600px]:text-[26px]">Have a question</h1>
-            <p class="text-fontSecondary">For any questions, please contact our company operators</p>
-            <!-- Message -->
-            <textarea class="w-full mt-4 mb-1 p-2 text-fontPrimary border border-fontSecondary resize-none" placeholder="Message text" cols="30" rows="10"></textarea>
-            <div class="flex gap-x-2">
-                <!-- Full Name -->
-                <input class="w-1/2 p-2 border border-fontSecondary" type="text" placeholder="Full Name">
-                <!-- Mobile Phone -->
-                <input class="w-1/2 p-2 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+                <h1 class="text-fontPrimary text-3xl leading-[36px] font-bold max-[600px]:text-[26px]">Have a question</h1>
+                <p class="text-fontSecondary">For any questions, please contact our company operators</p>
+                <!-- Message -->
+                <div class="h-[304px]">
+                    <textarea formControlName="message" class="w-full mt-4 -mb-1 p-2 text-fontPrimary border border-fontSecondary resize-none" placeholder="Message text" cols="30" rows="10"></textarea>
+                    <!-- Validators -->
+                    @if(form.get('message')?.getError('required') && isSendClicked) {
+                        <p class="text-sm text-red-400">This field is required</p>
+                    }
+                </div>
+                <div class="flex gap-x-2">
+                    <!-- Full Name -->
+                    <div class="w-1/2 h-14">
+                        <input formControlName="fullName" class="w-full p-2 border border-fontSecondary" type="text" placeholder="Full Name">
+                        <!-- Validators -->
+                        @if(form.get('fullName')?.getError('required') && isSendClicked) {
+                            <p class="text-sm text-red-400">This field is required</p>
+                        }
+                    </div>
+                    <!-- Mobile Phone -->
+                    <div class="w-1/2 h-14">
+                        <input formControlName="mobilePhone" class="w-full p-2 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+                        <!-- Validators -->
+                        @if(form.get('mobilePhone')?.getError('required') && isSendClicked) {
+                            <p class="text-sm text-red-400">This field is required</p>
+                        }
+                    </div>
+                </div>
+                <!-- Send button -->
+                <button (click)="onSendMessage()" class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
             </div>
-            <!-- Send button -->
-            <button class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
+    
+            <!-- Location map block -->
+            <div class="w-1/2 overflow-hidden max-[700px]:w-full">
+    
+                <!-- Google map -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191885.5985551056!2d69.11455450255876!3d41.28247992509807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1711298523079!5m2!1sen!2s" style="width: 100%; height: 500px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+            </div>
         </div>
-    
-        <!-- Location map block -->
-        <div class="w-1/2 overflow-hidden max-[700px]:w-full">
-    
-            <!-- Google map -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191885.5985551056!2d69.11455450255876!3d41.28247992509807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1711298523079!5m2!1sen!2s" style="width: 100%; height: 470px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
-        </div>
+
     </div>
 
 </div>

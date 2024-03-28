@@ -32,7 +32,7 @@
     <div class="w-1/2 max-[900px]:w-full">
 
         <div class="p-4 text-fontPrimary font-bold max-[450px]:px-2">
-            <h1 class="mb-2 text-xl">{{ data.name }}</h1>
+            <h1 class="mb-2 text-2xl">{{ data.name }}</h1>
             <h2 class="mb-2 text-btnColor">★★★★★</h2>
             @if(data.discount) {
                 <h3 class="h-[11px] text-xs font-normal text-fontSecondary line-through">{{ data.price | currency }} сум</h3>
@@ -43,14 +43,26 @@
             <p class="mt-4 font-normal leading-6 text-xs text-fontSecondary"> {{ data.details }}</p>
         </div>
 
-        <div class="p-4">
+        <div [formGroup]="form" class="p-4">
             <h1 class="mb-4 text-xl font-semibold">Fill form to order</h1>
             <!-- Full Name -->
-            <input class="w-full mb-4 p-1 border border-fontSecondary" type="text" placeholder="Full Name">
+            <div class="w-full h-14 mb-1">
+                <input formControlName="fullName" class="w-full p-1 border border-fontSecondary" type="text" placeholder="Full Name">
+                <!-- Validators -->
+                @if(form.get('fullName')?.getError('required') && isSendClicked) {
+                    <p class="text-sm text-red-400">This field is required</p>
+                }
+            </div>
             <!-- Mobile Phone -->
-            <input class="w-full mb-4 p-1 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+            <div class="w-full h-14">
+                <input formControlName="mobilePhone" class="w-full p-1 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+                <!-- Validators -->
+                @if(form.get('mobilePhone')?.getError('required') && isSendClicked) {
+                    <p class="text-sm text-red-400">This field is required</p>
+                }
+            </div>
             <!-- Send button -->
-            <button class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
+            <button (click)="onSendData()" class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
         </div>
 
     </div>
