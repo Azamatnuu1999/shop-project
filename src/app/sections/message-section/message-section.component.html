@@ -35,7 +35,7 @@
                 </div>
                 <div class="flex gap-x-2">
                     <!-- Full Name -->
-                    <div class="w-1/2 h-14">
+                    <div class="w-1/2 h-16">
                         <input formControlName="fullName" class="w-full p-2 border border-fontSecondary" type="text" [placeholder]="'sections.messageSection.fullName' | translate">
                         <!-- Validators -->
                         @if(form.get('fullName')?.getError('required') && isSendClicked) {
@@ -45,7 +45,7 @@
                         }
                     </div>
                     <!-- Mobile Phone -->
-                    <div class="w-1/2 h-14">
+                    <div class="w-1/2 h-16">
                         <input formControlName="mobilePhone" class="w-full p-2 border border-fontSecondary" type="text" [placeholder]="'sections.messageSection.mobilePhone' | translate">
                         <!-- Validators -->
                         @if(form.get('mobilePhone')?.getError('required') && isSendClicked) {
