@@ -8,11 +8,12 @@ import { takeUntil } from 'rxjs';
 import { DestroyService } from '../../core/services/destroy.service';
 import { CardComponent } from '../../components/card/card.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: 'product-detail.component.html',
-    imports: [NgFor, CurrencyPipe, RouterLink, CardComponent, ReactiveFormsModule],
+    imports: [NgFor, CurrencyPipe, RouterLink, CardComponent, ReactiveFormsModule, TranslateModule],
     providers: [CardService, DestroyService],
     standalone: true
 })

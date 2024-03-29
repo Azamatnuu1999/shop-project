@@ -10,7 +10,7 @@
         <div class="w-full relative mb-2">
             <img class="w-full" src="{{ mainUrl }}" alt="product main image">
             @if(data.discount) {
-                <span class="px-2 py-0 absolute top-2 left-2 text-sm text-white  bg-btnColor">SALE</span>
+                <span class="px-2 py-0 absolute top-2 left-2 text-sm text-white  bg-btnColor">{{ 'productDetail.sale' | translate }}</span>
             }
         </div>
 
@@ -44,32 +44,42 @@
         </div>
 
         <div [formGroup]="form" class="p-4">
-            <h1 class="mb-4 text-xl font-semibold">Fill form to order</h1>
+            <h1 class="mb-4 text-xl font-semibold">
+                {{ 'productDetail.fillForm' | translate }}
+            </h1>
             <!-- Full Name -->
             <div class="w-full h-14 mb-1">
-                <input formControlName="fullName" class="w-full p-1 border border-fontSecondary" type="text" placeholder="Full Name">
+                <input formControlName="fullName" class="w-full p-1 border border-fontSecondary" type="text" [placeholder]="'productDetail.fullName' | translate">
                 <!-- Validators -->
                 @if(form.get('fullName')?.getError('required') && isSendClicked) {
-                    <p class="text-sm text-red-400">This field is required</p>
+                    <p class="text-sm text-red-400">
+                        {{ 'productDetail.required' | translate }}
+                    </p>
                 }
             </div>
             <!-- Mobile Phone -->
             <div class="w-full h-14">
-                <input formControlName="mobilePhone" class="w-full p-1 border border-fontSecondary" type="text" placeholder="Mobile Phone">
+                <input formControlName="mobilePhone" class="w-full p-1 border border-fontSecondary" type="text" [placeholder]="'productDetail.mobilePhone' | translate">
                 <!-- Validators -->
                 @if(form.get('mobilePhone')?.getError('required') && isSendClicked) {
-                    <p class="text-sm text-red-400">This field is required</p>
+                    <p class="text-sm text-red-400">
+                        {{ 'productDetail.required' | translate }}
+                    </p>
                 }
             </div>
             <!-- Send button -->
-            <button (click)="onSendData()" class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">Send now</button>
+            <button (click)="onSendData()" class="w-fit m-auto mt-4 px-4 py-2 text-sm rounded-md text-white bg-btnColor">
+                {{ 'productDetail.sendNow' | translate }}
+            </button>
         </div>
 
     </div>
 
     <!-- Similar products -->
     <div class="countainer flex flex-wrap justify-around gap-8">
-        <h1 class="w-full mt-16 text-3xl font-semibold text-fontPrimary">Similar products</h1>
+        <h1 class="w-full mt-16 text-3xl font-semibold text-fontPrimary">
+            {{ 'productDetail.similarProducts' | translate }}
+        </h1>
         @for(card of similarProducts; track card) {
             <app-card
               (click)="onGetData(card.id)"

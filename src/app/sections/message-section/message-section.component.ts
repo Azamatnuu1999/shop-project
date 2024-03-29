@@ -1,11 +1,12 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-message-section',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule, TranslateModule],
   templateUrl: './message-section.component.html'
 })
 export class MessageSectionComponent implements OnInit {

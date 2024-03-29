@@ -7,5 +7,41 @@
         "contact": "Контакт"
     },
     "heroSection": {
+    },
+    "productDetail": {
+        "fillForm": "Буюртма учун формани тўлдиринг",
+        "fullName": "Исм Фамилия",
+        "mobilePhone": "Телефон рақами",
+        "sendNow": "Жўнатиш",
+        "required": "Бу майдонни тўлдириш мажбурий",
+        "similarProducts": "Ўхшаш товарлар",
+        "sale": "Чегирма"
+    },
+    "sections": {
+        "messageSection": {
+            "giveFeedback": "Бизга фикр билдиринг",
+            "contactUs": "Биз билан тезкор боғланиш",
+            "haveQuestion": "Саволингиз борми ?",
+            "messageAdmin": "Барча саволлар учун компаниямиз операторларига мурожаат қилинг",
+            "messageText": "Хабар матни",
+            "fullName": "Исм Фамилия",
+            "mobilePhone": "Телефон рақами",
+            "required": "Бу майдонни тўлдириш мажбурий",
+            "sendNow": "Жўнатиш"
+        },
+        "contactSection": {
+            "findUs": "Бизни топинг",
+            "contactCompany": "Бизнинг контактларимиз",
+            "callUs": "Телефон рақам",
+            "sendEmail": "Электрон манзил",
+            "location": "Жойлашув"
+        },
+        "ourPartners": {
+            "ourPartners": "Бизнинг ҳамкорлар",
+            "trustedCompanies": "Бизнинг компаниямизга ишонч билдирган ҳамкор компаниялар"
+        },
+        "productDetail": {
+            "required": "Бу майдонни тўлдириш мажбурий"
+        }
     }
 }
