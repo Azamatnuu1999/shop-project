@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CardModel } from '../../core/interfaces/card.model';
@@ -9,16 +9,20 @@ import { DestroyService } from '../../core/services/destroy.service';
 import { CardComponent } from '../../components/card/card.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { MesssageService } from '../../core/services/message.service';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: 'product-detail.component.html',
     imports: [NgFor, CurrencyPipe, RouterLink, CardComponent, ReactiveFormsModule, TranslateModule],
-    providers: [CardService, DestroyService],
+    providers: [CardService, DestroyService, DatePipe],
     standalone: true
 })
 
 export class ProductDetailComponent implements OnInit {
+    private $messageService = inject(MesssageService);
+    private datePipe = inject(DatePipe);
+
     public data: CardModel = {
         id: '',
         price: 0,
@@ -65,13 +69,27 @@ export class ProductDetailComponent implements OnInit {
         })
     }
 
-    onSendData() {
+    onSendData(data: CardModel) {
         this.isSendClicked = true;
         if(this.form.invalid) {
           this.updateValueAndValidity();
         } else {
-          this.isSendClicked = false;
-          this.form.reset();
+            const message = 
+            `
+            %0A1. *Маҳсулот рақами* - ${data.id};
+            %0A2. *Маҳсулот номи* - ${data.name};
+            %0A3. *Исм Фамилия:* ${this.form.get('fullName')?.value};
+            %0A4. *Телефон рақами:* ${this.form.get('mobilePhone')?.value};
+            %0A5. *Буюртма вақти:* ${this.datePipe.transform(new Date() , 'HH:mm:ss yyyy/MM/dd')};
+            `
+            // Send message to telegram group
+            this.$messageService
+            .sendMessage(message)
+            .pipe(takeUntil(this.destoyer))
+            .subscribe((data) => {
+              this.isSendClicked = false;
+              this.form.reset();
+          });
         }
     }
     
