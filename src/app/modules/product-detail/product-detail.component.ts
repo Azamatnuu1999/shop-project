@@ -1,6 +1,6 @@
 import { DatePipe, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CardModel } from '../../core/interfaces/card.model';
 import { CurrencyPipe } from '../../core/pipes/currency.pipe';
 import { CardService } from '../../core/services/card.service';
@@ -10,12 +10,14 @@ import { CardComponent } from '../../components/card/card.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MesssageService } from '../../core/services/message.service';
+import { PhoneNumberPipe } from '../../core/pipes/phone.pipe';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: 'product-detail.component.html',
-    imports: [NgFor, CurrencyPipe, RouterLink, CardComponent, ReactiveFormsModule, TranslateModule],
-    providers: [CardService, DestroyService, DatePipe],
+    imports: [NgFor, CurrencyPipe, RouterLink, CardComponent, ReactiveFormsModule, NgxMaskDirective, TranslateModule, PhoneNumberPipe],
+    providers: [CardService, DestroyService, DatePipe, PhoneNumberPipe, provideNgxMask()],
     standalone: true
 })
 
@@ -35,10 +37,12 @@ export class ProductDetailComponent implements OnInit {
     public mainUrl!: string;
     public isSendClicked = false;
 
+    private router = inject(Router);
     private fb = inject(FormBuilder);
     private route = inject(ActivatedRoute);
     private destoyer = inject(DestroyService);
     private $productService = inject(CardService);
+    private phoneNumberPipe = inject(PhoneNumberPipe);
     
     ngOnInit(): void {
         const productId = this.route.snapshot.params['id'];
@@ -47,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
 
     form: FormGroup = this.fb.group({
         fullName: ['', Validators.required],
-        mobilePhone: ['', Validators.required]
+        mobilePhone: ['', [Validators.required, Validators.minLength(9)]]
     })
 
     onGetData(id: string) {
@@ -79,8 +83,9 @@ export class ProductDetailComponent implements OnInit {
             %0A1. *Маҳсулот рақами* - ${data.id};
             %0A2. *Маҳсулот номи* - ${data.name};
             %0A3. *Исм Фамилия:* ${this.form.get('fullName')?.value};
-            %0A4. *Телефон рақами:* ${this.form.get('mobilePhone')?.value};
+            %0A4. *Телефон рақами:* ${this.phoneNumberPipe.transform(this.form.get('mobilePhone')?.value)};
             %0A5. *Буюртма вақти:* ${this.datePipe.transform(new Date() , 'HH:mm:ss yyyy/MM/dd')};
+            %0A5. *Маҳсулот манзили:* ${this.router.url};
             `
             // Send message to telegram group
             this.$messageService

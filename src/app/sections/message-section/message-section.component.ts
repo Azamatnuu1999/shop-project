@@ -1,21 +1,23 @@
-import { DatePipe, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MesssageService } from '../../core/services/message.service';
 import { takeUntil } from 'rxjs';
 import { DestroyService } from '../../core/services/destroy.service';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { PhoneNumberPipe } from '../../core/pipes/phone.pipe';
 
 @Component({
   selector: 'app-message-section',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, TranslateModule],
-  providers: [DatePipe, DestroyService],
+  imports: [NgIf, ReactiveFormsModule, TranslateModule,  NgxMaskDirective, PhoneNumberPipe],
+  providers: [DestroyService, PhoneNumberPipe, provideNgxMask()],
   templateUrl: './message-section.component.html'
 })
 export class MessageSectionComponent implements OnInit {
   private $messageService = inject(MesssageService);
-  private datePipe = inject(DatePipe);
+  private phoneNumberPipe = inject(PhoneNumberPipe);
   private destroyer = inject(DestroyService);
   public isSendClicked = false;
 
@@ -23,7 +25,7 @@ export class MessageSectionComponent implements OnInit {
   public form: FormGroup = this.fb.nonNullable.group({
     message: ['', Validators.required],
     fullName: ['', Validators.required],
-    mobilePhone: ['', Validators.required]
+    mobilePhone: ['', [Validators.required, Validators.minLength(9)]]
   });
 
   ngOnInit() : void {
@@ -33,14 +35,15 @@ export class MessageSectionComponent implements OnInit {
   onSendMessage() {
     this.isSendClicked = true;
     if(this.form.invalid) {
+      console.log('error', this.form.get('mobilePhone'))
       this.updateValueAndValidity();
     } else {
       const message = 
       `
       %0A *Шикоят ва таклифлар*
       %0A1. *Исм Фамилия:* ${this.form.get('fullName')?.value};
-      %0A2. *Телефон рақами:* ${this.form.get('mobilePhone')?.value};
-      %0A3. *Хабар мазмуни::* ${this.form.get('message')?.value};
+      %0A2. *Телефон рақами:* ${this.phoneNumberPipe.transform(this.form.get('mobilePhone')?.value)};
+      %0A3. *Хабар мазмуни:* ${this.form.get('message')?.value};
       `
       // Send message to telegram group
       this.$messageService

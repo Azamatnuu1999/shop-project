@@ -1,11 +1,12 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
+import { InMemoryScrollingOptions, provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes,
       withInMemoryScrolling(scrollConfig)
     ), 
+    provideEnvironmentNgxMask(),
     provideHttpClient(withFetch()),
     provideClientHydration(),
     importProvidersFrom([

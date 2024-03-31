@@ -59,11 +59,15 @@
             </div>
             <!-- Mobile Phone -->
             <div class="w-full h-14">
-                <input formControlName="mobilePhone" class="w-full p-1 border border-fontSecondary" type="text" [placeholder]="'productDetail.mobilePhone' | translate">
+                <input formControlName="mobilePhone" prefix="+998" mask="(00)-000-00-00" class="w-full p-1 border border-fontSecondary" type="text" [placeholder]="'+998(__)-___-__-__'">
                 <!-- Validators -->
                 @if(form.get('mobilePhone')?.getError('required') && isSendClicked) {
                     <p class="text-sm text-red-400">
                         {{ 'productDetail.required' | translate }}
+                    </p>
+                } @else if(form.get('mobilePhone')?.getError('minlength') && isSendClicked) {
+                    <p class="text-sm text-red-400">
+                        {{ 'productDetail.minLength' | translate }}
                     </p>
                 }
             </div>

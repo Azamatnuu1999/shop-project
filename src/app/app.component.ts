@@ -13,7 +13,7 @@ import { OurPartnersSectionComponent } from './sections/our-partners-section/our
     RouterOutlet,
     MessageSectionComponent,
     OurPartnersSectionComponent,
-    FooterSectionComponent,
+    FooterSectionComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
