@@ -85,7 +85,7 @@ export class ProductDetailComponent implements OnInit {
             %0A3. *Исм Фамилия:* ${this.form.get('fullName')?.value};
             %0A4. *Телефон рақами:* ${this.phoneNumberPipe.transform(this.form.get('mobilePhone')?.value)};
             %0A5. *Буюртма вақти:* ${this.datePipe.transform(new Date() , 'HH:mm:ss yyyy/MM/dd')};
-            %0A5. *Маҳсулот манзили:* ${this.router.url};
+            %0A5. *Маҳсулот манзили:* ${this.router['location']._platformLocation.location.origin};
             `
             // Send message to telegram group
             this.$messageService
